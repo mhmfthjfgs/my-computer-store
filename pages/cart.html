@@ -1,1 +1,435 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>سبد خرید | مای کامپیوتر</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 18px 5%;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .header-links a {
+            padding: 10px 15px;
+            border-radius: 8px;
+            background: rgba(255,255,255,.08);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            margin-bottom: 25px;
+        }
+
+        .page-title h1 {
+            margin-bottom: 8px;
+        }
+
+        .page-title p {
+            color: #6b7280;
+        }
+
+        .cart-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+
+            box-shadow:
+                0 5px 25px rgba(0,0,0,.06);
+        }
+
+        .cart-item {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                auto
+                auto
+                auto;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 20px 0;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .cart-product {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cart-product-icon {
+            width: 65px;
+            height: 65px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f3f4f6;
+
+            border-radius: 12px;
+
+            font-size: 30px;
+        }
+
+        .cart-product h3 {
+            margin: 0 0 8px;
+            font-size: 17px;
+        }
+
+        .cart-price {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+
+            border: none;
+
+            background: #eef2ff;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 20px;
+        }
+
+        .quantity {
+            min-width: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .cart-item-total {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .remove-btn {
+            border: none;
+
+            background: #fee2e2;
+
+            color: #b91c1c;
+
+            padding: 9px 13px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+        }
+
+        .cart-footer {
+            margin-top: 25px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            flex-wrap: wrap;
+        }
+
+        .total-box {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 12px 20px;
+
+            border-radius: 9px;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .btn-danger {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        #empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .empty-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart-text {
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 700px) {
+
+            .header-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .header-links {
+                justify-content: center;
+            }
+
+            .cart-item {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .cart-product {
+                justify-content: flex-start;
+            }
+
+            .cart-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-container">
+
+        <div class="logo">
+            🖥️ مای کامپیوتر
+        </div>
+
+        <div class="header-links">
+
+            <a href="../index.html">
+                🏠 خانه
+            </a>
+
+            <a href="shop.html">
+                🛍️ فروشگاه
+            </a>
+
+            <a href="account.html">
+                👤 حساب کاربری
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="page-title">
+
+        <h1>
+            🛒 سبد خرید
+        </h1>
+
+        <p>
+            محصولات انتخاب‌شده شما
+        </p>
+
+    </div>
+
+
+    <div class="cart-box">
+
+        <!-- سبد خالی -->
+
+        <div id="empty-cart">
+
+            <div class="empty-icon">
+                🛒
+            </div>
+
+            <h2>
+                سبد خرید شما خالی است
+            </h2>
+
+            <p class="empty-cart-text">
+                هنوز محصولی به سبد خرید اضافه نکرده‌اید.
+            </p>
+
+            <a
+                href="shop.html"
+                class="btn btn-primary">
+
+                مشاهده محصولات
+
+            </a>
+
+        </div>
+
+
+        <!-- محتوای سبد -->
+
+        <div id="cart-content"
+             style="display:none;">
+
+            <div id="cart-items"></div>
+
+
+            <div class="cart-footer">
+
+                <div class="total-box">
+
+                    مبلغ کل:
+
+                    <span id="cart-total">
+                        ۰ تومان
+                    </span>
+
+                </div>
+
+
+                <div class="buttons">
+
+                    <button
+                        onclick="clearCart()"
+                        class="btn btn-danger">
+
+                        خالی کردن سبد
+
+                    </button>
+
+
+                    <a
+                        href="../index.html"
+                        class="btn btn-secondary">
+
+                        ادامه خرید
+
+                    </a>
+
+
+                    <a
+                        href="checkout.html"
+                        class="btn btn-primary">
+
+                        ادامه و ثبت سفارش
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="../js/cart.js"></script>
+
+</body>
+
+</html>

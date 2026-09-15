@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>فروشگاه | مای کامپیوتر</title>
 
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
+      margin: 0;
       font-family: Tahoma, Arial, sans-serif;
-      background: #f5f7fb;
+      background: #f5f7fa;
       color: #222;
     }
 
@@ -24,158 +22,90 @@
       color: inherit;
     }
 
-    button,
-    input,
-    select {
-      font-family: inherit;
-    }
-
-    /* Header */
-
     header {
       background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      border-bottom: 1px solid #ddd;
+      padding: 18px 5%;
     }
 
-    .header-container {
+    .header {
       max-width: 1200px;
       margin: auto;
-      padding: 16px 20px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .logo {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
-      color: #2563eb;
-      white-space: nowrap;
-    }
-
-    .search-box {
-      flex: 1;
-      position: relative;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 13px 18px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      outline: none;
-      font-size: 14px;
-    }
-
-    .search-box input:focus {
-      border-color: #2563eb;
+      color: #087f8c;
     }
 
     .header-buttons {
       display: flex;
-      gap: 8px;
+      gap: 10px;
     }
 
     .header-btn {
-      background: #f1f5f9;
-      padding: 10px 14px;
-      border-radius: 10px;
-      white-space: nowrap;
-      font-size: 14px;
+      padding: 10px 15px;
+      background: #f1f3f5;
+      border-radius: 8px;
     }
-
-    .header-btn:hover {
-      background: #e2e8f0;
-    }
-
-    .cart-count {
-      background: #2563eb;
-      color: white;
-      padding: 2px 7px;
-      border-radius: 20px;
-      font-size: 12px;
-    }
-
-    /* Navigation */
 
     nav {
-      background: #fff;
-      border-bottom: 1px solid #eee;
+      background: #087f8c;
+      color: white;
     }
 
-    .nav-container {
+    nav .nav-inner {
       max-width: 1200px;
       margin: auto;
-      padding: 10px 20px;
       display: flex;
-      gap: 22px;
-      overflow-x: auto;
+      gap: 25px;
+      padding: 14px 5%;
     }
 
-    .nav-container a {
-      white-space: nowrap;
-      color: #444;
-      font-size: 14px;
+    nav a {
+      color: white;
+      font-weight: bold;
     }
-
-    .nav-container a:hover {
-      color: #2563eb;
-    }
-
-    /* Page */
 
     .container {
       max-width: 1200px;
-      margin: auto;
-      padding: 35px 20px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    .page-title {
+    h1 {
       margin-bottom: 25px;
     }
 
-    .page-title h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    .page-title p {
-      color: #777;
-      font-size: 14px;
-    }
-
-    /* Toolbar */
-
-    .toolbar {
+    .tools {
       background: white;
-      padding: 18px;
-      border-radius: 14px;
+      padding: 20px;
+      border-radius: 12px;
       margin-bottom: 25px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       gap: 15px;
       flex-wrap: wrap;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.04);
     }
 
-    .result-count {
-      color: #666;
-      font-size: 14px;
-    }
-
-    .sort-box select {
-      padding: 10px 14px;
+    input,
+    select {
+      padding: 12px;
       border: 1px solid #ddd;
-      border-radius: 10px;
-      background: white;
-      outline: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 15px;
     }
 
-    /* Categories */
+    input {
+      flex: 1;
+      min-width: 220px;
+    }
 
     .categories {
       display: flex;
@@ -184,1084 +114,408 @@
       margin-bottom: 30px;
     }
 
-    .category-btn {
+    .category {
       border: none;
       background: white;
-      border: 1px solid #e5e7eb;
       padding: 10px 16px;
-      border-radius: 10px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 13px;
+      font-family: inherit;
     }
 
-    .category-btn:hover,
-    .category-btn.active {
-      background: #2563eb;
+    .category.active {
+      background: #087f8c;
       color: white;
-      border-color: #2563eb;
     }
 
-    /* Products */
-
-    .products-grid {
+    .products {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
-    .product-card {
+    .product {
       background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
-      transition: 0.2s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.09);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
     }
 
     .product-image {
-      height: 190px;
-      background: #f1f5f9;
+      height: 140px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 70px;
-    }
-
-    .product-info {
-      padding: 18px;
-    }
-
-    .product-category {
-      font-size: 12px;
-      color: #2563eb;
-      margin-bottom: 8px;
-    }
-
-    .product-title {
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 65px;
+      background: #f5f7fa;
+      border-radius: 10px;
       margin-bottom: 15px;
-      min-height: 42px;
     }
 
-    .product-price {
+    .product h3 {
+      margin: 10px 0;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #087f8c;
       font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 15px;
+      margin: 12px 0;
     }
 
-    .product-price span {
-      font-size: 12px;
-      font-weight: normal;
-      color: #777;
-    }
-
-    .product-actions {
+    .buttons {
       display: flex;
       gap: 8px;
     }
 
-    .view-btn {
+    .btn {
       flex: 1;
-      border: 1px solid #ddd;
-      background: white;
       padding: 11px;
-      border-radius: 9px;
+      border-radius: 8px;
+      border: none;
       cursor: pointer;
-      text-align: center;
-      font-size: 13px;
+      font-family: inherit;
+      font-weight: bold;
     }
 
-    .view-btn:hover {
-      background: #f8fafc;
+    .view {
+      background: #eee;
     }
 
     .add-cart {
-      flex: 1;
-      border: none;
-      background: #2563eb;
+      background: #087f8c;
       color: white;
-      padding: 11px;
-      border-radius: 9px;
-      cursor: pointer;
-      font-size: 13px;
     }
-
-    .add-cart:hover {
-      background: #1d4ed8;
-    }
-
-    /* Empty */
-
-    .empty {
-      display: none;
-      text-align: center;
-      background: white;
-      padding: 60px 20px;
-      border-radius: 15px;
-      color: #777;
-    }
-
-    .empty-icon {
-      font-size: 55px;
-      margin-bottom: 15px;
-    }
-
-    /* Footer */
 
     footer {
       margin-top: 60px;
-      background: #111827;
+      background: #222;
       color: white;
-      padding: 40px 20px;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
-
-    footer h3 {
-      margin-bottom: 15px;
-    }
-
-    footer p {
-      color: #cbd5e1;
-      line-height: 2;
-      font-size: 14px;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 1000px) {
-      .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 750px) {
-      .header-container {
-        flex-wrap: wrap;
-      }
-
-      .search-box {
-        order: 3;
-        flex-basis: 100%;
-      }
-
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .products-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .page-title h1 {
-        font-size: 24px;
-      }
+      text-align: center;
+      padding: 30px;
     }
   </style>
 </head>
 
 <body>
 
-<!-- Header -->
-
 <header>
-  <div class="header-container">
+  <div class="header">
 
     <a href="../index.html" class="logo">
-      💻 مای کامپیوتر
+      MY COMPUTER
     </a>
 
-    <div class="search-box">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="جستجوی محصول..."
-      >
-    </div>
-
     <div class="header-buttons">
-
-      <a href="account.html" class="header-btn">
-        👤 حساب
-      </a>
-
+      <a href="../index.html" class="header-btn">🏠 خانه</a>
+      <a href="account.html" class="header-btn">👤 حساب</a>
       <a href="cart.html" class="header-btn">
-        🛒 سبد
-        <span id="cartCount" class="cart-count">0</span>
+        🛒 سبد خرید
+        <span id="cartCount">0</span>
       </a>
-
     </div>
 
   </div>
 </header>
 
-<!-- Navigation -->
-
 <nav>
-  <div class="nav-container">
-
+  <div class="nav-inner">
     <a href="../index.html">خانه</a>
-
     <a href="shop.html">فروشگاه</a>
-
-    <a href="shop.html?category=computer">
-      کامپیوتر و قطعات
-    </a>
-
-    <a href="shop.html?category=cable">
-      کابل و تبدیل
-    </a>
-
-    <a href="shop.html?category=network">
-      شبکه
-    </a>
-
-    <a href="shop.html?category=storage">
-      حافظه و ذخیره‌سازی
-    </a>
-
-    <a href="shop.html?category=mobile">
-      موبایل و شارژ
-    </a>
-
-    <a href="shop.html?category=gaming">
-      گیمینگ
-    </a>
-
+    <a href="cart.html">سبد خرید</a>
+    <a href="account.html">حساب کاربری</a>
   </div>
 </nav>
 
+<div class="container">
 
-<!-- Main -->
+  <h1>🛍️ فروشگاه</h1>
 
-<main class="container">
+  <div class="tools">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="جستجوی محصول..."
+    >
 
-  <div class="page-title">
-
-    <h1>فروشگاه</h1>
-
-    <p>
-      همه محصولات مای کامپیوتر را مشاهده کنید
-    </p>
-
+    <select id="sortSelect">
+      <option value="">مرتب‌سازی</option>
+      <option value="cheap">ارزان‌ترین</option>
+      <option value="expensive">گران‌ترین</option>
+      <option value="name">نام محصول</option>
+    </select>
   </div>
-
-
-  <!-- Categories -->
 
   <div class="categories">
-
-    <button
-      class="category-btn active"
-      data-category="all">
-      همه محصولات
-    </button>
-
-    <button
-      class="category-btn"
-      data-category="computer">
-      🖥️ کامپیوتر و قطعات
-    </button>
-
-    <button
-      class="category-btn"
-      data-category="cable">
-      🔌 کابل و تبدیل
-    </button>
-
-    <button
-      class="category-btn"
-      data-category="network">
-      🌐 شبکه
-    </button>
-
-    <button
-      class="category-btn"
-      data-category="storage">
-      💾 حافظه
-    </button>
-
-    <button
-      class="category-btn"
-      data-category="mobile">
-      📱 موبایل و شارژ
-    </button>
-
-    <button
-      class="category-btn"
-      data-category="gaming">
-      🎮 گیمینگ
-    </button>
-
-    <button
-      class="category-btn"
-      data-category="audio">
-      🔊 صوتی
-    </button>
-
+    <button class="category active" data-category="all">همه</button>
+    <button class="category" data-category="computer">کامپیوتر</button>
+    <button class="category" data-category="cable">کابل و تبدیل</button>
+    <button class="category" data-category="storage">حافظه</button>
+    <button class="category" data-category="mobile">موبایل</button>
+    <button class="category" data-category="gaming">گیمینگ</button>
+    <button class="category" data-category="network">شبکه</button>
+    <button class="category" data-category="audio">صوتی</button>
   </div>
 
+  <div class="products" id="products">
 
-  <!-- Toolbar -->
+    <div class="product" data-category="computer" data-search="ماوس کامپیوتر mouse">
+      <div class="product-image">🖱️</div>
+      <h3>ماوس کامپیوتر</h3>
+      <div class="price">۳۵۰,۰۰۰ تومان</div>
 
-  <div class="toolbar">
+      <div class="buttons">
+        <a class="btn view" href="product.html?id=mouse-001">مشاهده</a>
 
-    <div class="result-count">
-      <span id="resultCount">8</span>
-      محصول
+        <button
+          class="btn add-cart"
+          data-id="mouse-001"
+          data-name="ماوس کامپیوتر"
+          data-price="350000"
+          data-image="🖱️">
+          افزودن
+        </button>
+      </div>
     </div>
 
-    <div class="sort-box">
+    <div class="product" data-category="computer" data-search="کیبورد کامپیوتر keyboard">
+      <div class="product-image">⌨️</div>
+      <h3>کیبورد کامپیوتر</h3>
+      <div class="price">۵۲۰,۰۰۰ تومان</div>
 
-      <select id="sortSelect">
+      <div class="buttons">
+        <a class="btn view" href="product.html?id=keyboard-001">مشاهده</a>
 
-        <option value="default">
-          مرتب‌سازی پیش‌فرض
-        </option>
-
-        <option value="cheap">
-          ارزان‌ترین
-        </option>
-
-        <option value="expensive">
-          گران‌ترین
-        </option>
-
-        <option value="name">
-          نام محصول
-        </option>
-
-      </select>
-
+        <button
+          class="btn add-cart"
+          data-id="keyboard-001"
+          data-name="کیبورد کامپیوتر"
+          data-price="520000"
+          data-image="⌨️">
+          افزودن
+        </button>
+      </div>
     </div>
 
-  </div>
+    <div class="product" data-category="storage" data-search="فلش مموری 128 گیگابایت">
+      <div class="product-image">💾</div>
+      <h3>فلش مموری 128GB</h3>
+      <div class="price">۷۹۰,۰۰۰ تومان</div>
 
+      <div class="buttons">
+        <a class="btn view" href="product.html?id=flash-128-001">مشاهده</a>
 
-  <!-- Products -->
-
-  <div class="products-grid" id="productsGrid">
-
-
-    <!-- Product 1 -->
-
-    <div
-      class="product-card"
-      data-category="computer"
-      data-name="ماوس کامپیوتر"
-      data-search="ماوس کامپیوتر mouse">
-
-      <div class="product-image">
-        🖱️
+        <button
+          class="btn add-cart"
+          data-id="flash-128-001"
+          data-name="فلش مموری 128GB"
+          data-price="790000"
+          data-image="💾">
+          افزودن
+        </button>
       </div>
-
-      <div class="product-info">
-
-        <div class="product-category">
-          کامپیوتر و قطعات
-        </div>
-
-        <div class="product-title">
-          ماوس کامپیوتر
-        </div>
-
-        <div class="product-price">
-          ۳۵۰,۰۰۰
-          <span>تومان</span>
-        </div>
-
-        <div class="product-actions">
-
-          <a
-            href="product.html?id=mouse-001"
-            class="view-btn">
-            مشاهده
-          </a>
-
-          <button
-            class="add-cart"
-            data-id="mouse-001"
-            data-name="ماوس کامپیوتر"
-            data-price="350000"
-            data-image="🖱️">
-            افزودن
-          </button>
-
-        </div>
-
-      </div>
-
     </div>
 
+    <div class="product" data-category="audio" data-search="هندزفری سیمی">
+      <div class="product-image">🎧</div>
+      <h3>هندزفری سیمی</h3>
+      <div class="price">۴۲۰,۰۰۰ تومان</div>
 
-    <!-- Product 2 -->
+      <div class="buttons">
+        <a class="btn view" href="product.html?id=handsfree-001">مشاهده</a>
 
-    <div
-      class="product-card"
-      data-category="computer"
-      data-name="کیبورد کامپیوتر"
-      data-search="کیبورد کامپیوتر keyboard">
-
-      <div class="product-image">
-        ⌨️
+        <button
+          class="btn add-cart"
+          data-id="handsfree-001"
+          data-name="هندزفری سیمی"
+          data-price="420000"
+          data-image="🎧">
+          افزودن
+        </button>
       </div>
-
-      <div class="product-info">
-
-        <div class="product-category">
-          کامپیوتر و قطعات
-        </div>
-
-        <div class="product-title">
-          کیبورد کامپیوتر
-        </div>
-
-        <div class="product-price">
-          ۵۲۰,۰۰۰
-          <span>تومان</span>
-        </div>
-
-        <div class="product-actions">
-
-          <a
-            href="product.html?id=keyboard-001"
-            class="view-btn">
-            مشاهده
-          </a>
-
-          <button
-            class="add-cart"
-            data-id="keyboard-001"
-            data-name="کیبورد کامپیوتر"
-            data-price="520000"
-            data-image="⌨️">
-            افزودن
-          </button>
-
-        </div>
-
-      </div>
-
     </div>
 
+    <div class="product" data-category="cable" data-search="کابل شارژ type c">
+      <div class="product-image">🔌</div>
+      <h3>کابل شارژ Type-C</h3>
+      <div class="price">۱۸۰,۰۰۰ تومان</div>
 
-    <!-- Product 3 -->
+      <div class="buttons">
+        <a class="btn view" href="product.html?id=typec-001">مشاهده</a>
 
-    <div
-      class="product-card"
-      data-category="storage"
-      data-name="فلش مموری 128GB"
-      data-search="فلش مموری 128 گیگ flash usb">
-
-      <div class="product-image">
-        💾
+        <button
+          class="btn add-cart"
+          data-id="typec-001"
+          data-name="کابل شارژ Type-C"
+          data-price="180000"
+          data-image="🔌">
+          افزودن
+        </button>
       </div>
-
-      <div class="product-info">
-
-        <div class="product-category">
-          حافظه و ذخیره‌سازی
-        </div>
-
-        <div class="product-title">
-          فلش مموری 128GB
-        </div>
-
-        <div class="product-price">
-          ۷۹۰,۰۰۰
-          <span>تومان</span>
-        </div>
-
-        <div class="product-actions">
-
-          <a
-            href="product.html?id=flash-128-001"
-            class="view-btn">
-            مشاهده
-          </a>
-
-          <button
-            class="add-cart"
-            data-id="flash-128-001"
-            data-name="فلش مموری 128GB"
-            data-price="790000"
-            data-image="💾">
-            افزودن
-          </button>
-
-        </div>
-
-      </div>
-
     </div>
 
+    <div class="product" data-category="mobile" data-search="شارژر دیواری">
+      <div class="product-image">🔋</div>
+      <h3>شارژر دیواری</h3>
+      <div class="price">۳۹۰,۰۰۰ تومان</div>
 
-    <!-- Product 4 -->
+      <div class="buttons">
+        <a class="btn view" href="product.html?id=charger-001">مشاهده</a>
 
-    <div
-      class="product-card"
-      data-category="mobile"
-      data-name="هندزفری سیمی"
-      data-search="هندزفری سیمی handsfree">
-
-      <div class="product-image">
-        🎧
+        <button
+          class="btn add-cart"
+          data-id="charger-001"
+          data-name="شارژر دیواری"
+          data-price="390000"
+          data-image="🔋">
+          افزودن
+        </button>
       </div>
-
-      <div class="product-info">
-
-        <div class="product-category">
-          موبایل و شارژ
-        </div>
-
-        <div class="product-title">
-          هندزفری سیمی
-        </div>
-
-        <div class="product-price">
-          ۴۲۰,۰۰۰
-          <span>تومان</span>
-        </div>
-
-        <div class="product-actions">
-
-          <a
-            href="product.html?id=handsfree-001"
-            class="view-btn">
-            مشاهده
-          </a>
-
-          <button
-            class="add-cart"
-            data-id="handsfree-001"
-            data-name="هندزفری سیمی"
-            data-price="420000"
-            data-image="🎧">
-            افزودن
-          </button>
-
-        </div>
-
-      </div>
-
     </div>
 
+    <div class="product" data-category="network" data-search="کابل شبکه lan">
+      <div class="product-image">🌐</div>
+      <h3>کابل شبکه</h3>
+      <div class="price">۲۲۰,۰۰۰ تومان</div>
 
-    <!-- Product 5 -->
+      <div class="buttons">
+        <a class="btn view" href="product.html?id=lan-001">مشاهده</a>
 
-    <div
-      class="product-card"
-      data-category="cable"
-      data-name="کابل شارژ Type-C"
-      data-search="کابل شارژ type c تایپ سی">
-
-      <div class="product-image">
-        🔌
+        <button
+          class="btn add-cart"
+          data-id="lan-001"
+          data-name="کابل شبکه"
+          data-price="220000"
+          data-image="🌐">
+          افزودن
+        </button>
       </div>
-
-      <div class="product-info">
-
-        <div class="product-category">
-          کابل و تبدیل
-        </div>
-
-        <div class="product-title">
-          کابل شارژ Type-C
-        </div>
-
-        <div class="product-price">
-          ۱۸۰,۰۰۰
-          <span>تومان</span>
-        </div>
-
-        <div class="product-actions">
-
-          <a
-            href="product.html?id=typec-001"
-            class="view-btn">
-            مشاهده
-          </a>
-
-          <button
-            class="add-cart"
-            data-id="typec-001"
-            data-name="کابل شارژ Type-C"
-            data-price="180000"
-            data-image="🔌">
-            افزودن
-          </button>
-
-        </div>
-
-      </div>
-
     </div>
 
+    <div class="product" data-category="gaming" data-search="دسته بازی controller">
+      <div class="product-image">🎮</div>
+      <h3>دسته بازی</h3>
+      <div class="price">۱,۲۰۰,۰۰۰ تومان</div>
 
-    <!-- Product 6 -->
+      <div class="buttons">
+        <a class="btn view" href="product.html?id=controller-001">مشاهده</a>
 
-    <div
-      class="product-card"
-      data-category="mobile"
-      data-name="شارژر دیواری"
-      data-search="شارژر دیواری charger">
-
-      <div class="product-image">
-        🔋
+        <button
+          class="btn add-cart"
+          data-id="controller-001"
+          data-name="دسته بازی"
+          data-price="1200000"
+          data-image="🎮">
+          افزودن
+        </button>
       </div>
-
-      <div class="product-info">
-
-        <div class="product-category">
-          موبایل و شارژ
-        </div>
-
-        <div class="product-title">
-          شارژر دیواری
-        </div>
-
-        <div class="product-price">
-          ۳۹۰,۰۰۰
-          <span>تومان</span>
-        </div>
-
-        <div class="product-actions">
-
-          <a
-            href="product.html?id=charger-001"
-            class="view-btn">
-            مشاهده
-          </a>
-
-          <button
-            class="add-cart"
-            data-id="charger-001"
-            data-name="شارژر دیواری"
-            data-price="390000"
-            data-image="🔋">
-            افزودن
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- Product 7 -->
-
-    <div
-      class="product-card"
-      data-category="network"
-      data-name="کابل شبکه"
-      data-search="کابل شبکه lan ethernet">
-
-      <div class="product-image">
-        🌐
-      </div>
-
-      <div class="product-info">
-
-        <div class="product-category">
-          شبکه
-        </div>
-
-        <div class="product-title">
-          کابل شبکه
-        </div>
-
-        <div class="product-price">
-          ۲۲۰,۰۰۰
-          <span>تومان</span>
-        </div>
-
-        <div class="product-actions">
-
-          <a
-            href="product.html?id=lan-001"
-            class="view-btn">
-            مشاهده
-          </a>
-
-          <button
-            class="add-cart"
-            data-id="lan-001"
-            data-name="کابل شبکه"
-            data-price="220000"
-            data-image="🌐">
-            افزودن
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- Product 8 -->
-
-    <div
-      class="product-card"
-      data-category="gaming"
-      data-name="دسته بازی"
-      data-search="دسته بازی game controller">
-
-      <div class="product-image">
-        🎮
-      </div>
-
-      <div class="product-info">
-
-        <div class="product-category">
-          گیمینگ و کنسول
-        </div>
-
-        <div class="product-title">
-          دسته بازی
-        </div>
-
-        <div class="product-price">
-          ۱,۲۰۰,۰۰۰
-          <span>تومان</span>
-        </div>
-
-        <div class="product-actions">
-
-          <a
-            href="product.html?id=controller-001"
-            class="view-btn">
-            مشاهده
-          </a>
-
-          <button
-            class="add-cart"
-            data-id="controller-001"
-            data-name="دسته بازی"
-            data-price="1200000"
-            data-image="🎮">
-            افزودن
-          </button>
-
-        </div>
-
-      </div>
-
     </div>
 
   </div>
-
-
-  <!-- Empty -->
-
-  <div class="empty" id="emptyState">
-
-    <div class="empty-icon">
-      🔍
-    </div>
-
-    <h2>
-      محصولی پیدا نشد
-    </h2>
-
-    <p>
-      عبارت جستجو یا دسته‌بندی دیگری را امتحان کنید.
-    </p>
-
-  </div>
-
-</main>
-
-
-<!-- Footer -->
+</div>
 
 <footer>
-
-  <div class="footer-container">
-
-    <div>
-      <h3>مای کامپیوتر</h3>
-
-      <p>
-        فروشگاه تجهیزات کامپیوتری،
-        لوازم جانبی و محصولات دیجیتال
-      </p>
-    </div>
-
-    <div>
-      <h3>دسترسی سریع</h3>
-
-      <p>
-        <a href="../index.html">خانه</a>
-        <br>
-        <a href="shop.html">فروشگاه</a>
-        <br>
-        <a href="cart.html">سبد خرید</a>
-        <br>
-        <a href="account.html">حساب کاربری</a>
-      </p>
-    </div>
-
-    <div>
-      <h3>تماس با ما</h3>
-
-      <p>
-        برای اطلاعات بیشتر با ما تماس بگیرید.
-      </p>
-    </div>
-
-  </div>
-
+  © مای کامپیوتر - فروشگاه تخصصی لوازم کامپیوتر و دیجیتال
 </footer>
-
-
-<!-- Cart JS -->
 
 <script src="../js/cart.js"></script>
 
-
-<!-- Shop JS -->
-
 <script>
-
+  const products = document.querySelectorAll(".product");
   const searchInput = document.getElementById("searchInput");
-  const categoryButtons = document.querySelectorAll(".category-btn");
   const sortSelect = document.getElementById("sortSelect");
-  const productsGrid = document.getElementById("productsGrid");
-  const resultCount = document.getElementById("resultCount");
-  const emptyState = document.getElementById("emptyState");
+  const categories = document.querySelectorAll(".category");
 
-  let selectedCategory = "all";
+  let currentCategory = "all";
 
-
-  function updateProducts() {
-
-    const searchText =
-      searchInput.value
-        .trim()
-        .toLowerCase();
-
-    const products =
-      Array.from(
-        productsGrid.querySelectorAll(".product-card")
-      );
-
-    let visibleProducts = products.filter(product => {
-
-      const category =
-        product.dataset.category;
-
-      const name =
-        product.dataset.name.toLowerCase();
-
-      const search =
-        (product.dataset.search || "").toLowerCase();
-
-      const categoryMatch =
-        selectedCategory === "all" ||
-        category === selectedCategory;
-
-      const searchMatch =
-        !searchText ||
-        name.includes(searchText) ||
-        search.includes(searchText);
-
-      return categoryMatch && searchMatch;
-
-    });
-
-
-    /* Sorting */
-
-    if (sortSelect.value === "cheap") {
-
-      visibleProducts.sort((a, b) => {
-
-        const priceA =
-          Number(
-            a.querySelector(".add-cart").dataset.price
-          );
-
-        const priceB =
-          Number(
-            b.querySelector(".add-cart").dataset.price
-          );
-
-        return priceA - priceB;
-
-      });
-
-    }
-
-
-    if (sortSelect.value === "expensive") {
-
-      visibleProducts.sort((a, b) => {
-
-        const priceA =
-          Number(
-            a.querySelector(".add-cart").dataset.price
-          );
-
-        const priceB =
-          Number(
-            b.querySelector(".add-cart").dataset.price
-          );
-
-        return priceB - priceA;
-
-      });
-
-    }
-
-
-    if (sortSelect.value === "name") {
-
-      visibleProducts.sort((a, b) => {
-
-        return a.dataset.name.localeCompare(
-          b.dataset.name,
-          "fa"
-        );
-
-      });
-
-    }
-
-
-    /* Hide all */
+  function filterProducts() {
+    const search = searchInput.value.trim().toLowerCase();
 
     products.forEach(product => {
+      const category = product.dataset.category;
+      const text = product.dataset.search.toLowerCase();
 
-      product.style.display = "none";
+      const categoryMatch =
+        currentCategory === "all" ||
+        category === currentCategory;
 
+      const searchMatch =
+        text.includes(search);
+
+      product.style.display =
+        categoryMatch && searchMatch
+          ? ""
+          : "none";
     });
-
-
-    /* Show filtered */
-
-    visibleProducts.forEach(product => {
-
-      product.style.display = "block";
-
-      productsGrid.appendChild(product);
-
-    });
-
-
-    resultCount.textContent =
-      visibleProducts.length;
-
-
-    emptyState.style.display =
-      visibleProducts.length === 0
-        ? "block"
-        : "none";
-
   }
 
+  categories.forEach(button => {
+    button.addEventListener("click", () => {
 
-  /* Search */
+      categories.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+      currentCategory =
+        button.dataset.category;
+
+      filterProducts();
+    });
+  });
 
   searchInput.addEventListener(
     "input",
-    updateProducts
+    filterProducts
   );
 
+  sortSelect.addEventListener("change", () => {
 
-  /* Categories */
+    const container =
+      document.getElementById("products");
 
-  categoryButtons.forEach(button => {
+    const items =
+      Array.from(products);
 
-    button.addEventListener(
-      "click",
-      function () {
-
-        categoryButtons.forEach(btn => {
-
-          btn.classList.remove("active");
-
-        });
-
-        this.classList.add("active");
-
-        selectedCategory =
-          this.dataset.category;
-
-        updateProducts();
-
-      }
-    );
-
-  });
-
-
-  /* Sort */
-
-  sortSelect.addEventListener(
-    "change",
-    updateProducts
-  );
-
-
-  /* URL category */
-
-  const params =
-    new URLSearchParams(
-      window.location.search
-    );
-
-  const urlCategory =
-    params.get("category");
-
-
-  if (urlCategory) {
-
-    const matchingButton =
-      document.querySelector(
-        `.category-btn[data-category="${urlCategory}"]`
+    if (sortSelect.value === "cheap") {
+      items.sort((a, b) =>
+        Number(
+          a.querySelector(".add-cart").dataset.price
+        ) -
+        Number(
+          b.querySelector(".add-cart").dataset.price
+        )
       );
-
-    if (matchingButton) {
-
-      categoryButtons.forEach(btn => {
-
-        btn.classList.remove("active");
-
-      });
-
-      matchingButton.classList.add("active");
-
-      selectedCategory =
-        urlCategory;
-
     }
 
-  }
+    if (sortSelect.value === "expensive") {
+      items.sort((a, b) =>
+        Number(
+          b.querySelector(".add-cart").dataset.price
+        ) -
+        Number(
+          a.querySelector(".add-cart").dataset.price
+        )
+      );
+    }
 
+    if (sortSelect.value === "name") {
+      items.sort((a, b) =>
+        a.querySelector("h3").textContent.localeCompare(
+          b.querySelector("h3").textContent,
+          "fa"
+        )
+      );
+    }
 
-  /* Initial */
+    items.forEach(item =>
+      container.appendChild(item)
+    );
+  });
 
-  updateProducts();
-
+  filterProducts();
 </script>
 
 </body>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>مای کامپیوتر | فروشگاه لوازم کامپیوتر و دیجیتال</title>
+
+  <meta name="description"
+        content="فروشگاه مای کامپیوتر، انواع قطعات کامپیوتر، لوازم جانبی، کابل، حافظه، تجهیزات شبکه، لوازم موبایل و گیمینگ">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+      line-height: 1.8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: auto;
+    }
+
+    /* ===== Header ===== */
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e8ebf2;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .top-header {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 23px;
+      font-weight: bold;
+      color: #2563eb;
+      white-space: nowrap;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: #2563eb;
+      color: white;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .search {
+      flex: 1;
+      max-width: 580px;
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+      height: 46px;
+      border: none;
+      outline: none;
+      background: #f2f4f8;
+      border-radius: 12px;
+      padding: 0 48px 0 18px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .search span {
+      position: absolute;
+      right: 17px;
+      top: 8px;
+      font-size: 20px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .header-btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid #e6e9f0;
+      background: white;
+      border-radius: 12px;
+      font-size: 19px;
+    }
+
+    .cart {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      width: 19px;
+      height: 19px;
+      background: #ef4444;
+      color: white;
+      font-size: 11px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    /* ===== Navigation ===== */
+
+    .navigation {
+      border-top: 1px solid #f0f1f5;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 28px;
+      min-height: 48px;
+      align-items: center;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-menu a {
+      color: #596275;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .nav-menu a:hover {
+      color: #2563eb;
+    }
+
+    /* ===== Hero ===== */
+
+    .hero {
+      margin-top: 28px;
+      background: linear-gradient(135deg, #172554, #2563eb);
+      min-height: 340px;
+      border-radius: 24px;
+      color: white;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-content {
+      padding: 55px;
+      max-width: 650px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero small {
+      background: rgba(255,255,255,.15);
+      padding: 6px 13px;
+      border-radius: 20px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 20px 0 10px;
+      line-height: 1.4;
+    }
+
+    .hero p {
+      color: #dbeafe;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: white;
+      color: #1d4ed8;
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .hero-decoration {
+      position: absolute;
+      left: -60px;
+      bottom: -110px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+    }
+
+    /* ===== Section ===== */
+
+    .section {
+      margin-top: 45px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .section-title h2 {
+      font-size: 22px;
+    }
+
+    .section-title a {
+      color: #2563eb;
+      font-size: 13px;
+    }
+
+    /* ===== Categories ===== */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      background: white;
+      border: 1px solid #e9ecf2;
+      border-radius: 16px;
+      padding: 20px 10px;
+      text-align: center;
+      transition: .25s;
+    }
+
+    .category:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(20,40,80,.08);
+    }
+
+    .category-icon {
+      width: 55px;
+      height: 55px;
+      margin: auto auto 10px;
+      background: #eff6ff;
+      color: #2563eb;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+    }
+
+    .category h3 {
+      font-size: 14px;
+    }
+
+    /* ===== Products ===== */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid #e8ebf1;
+      border-radius: 17px;
+      overflow: hidden;
+      transition: .25s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(20,40,80,.09);
+    }
+
+    .product-image {
+      height: 190px;
+      background: #f7f8fb;
+      display: grid;
+      place-items: center;
+      font-size: 65px;
+    }
+
+    .product-info {
+      padding: 16px;
+    }
+
+    .product-title {
+      font-size: 14px;
+      min-height: 52px;
+    }
+
+    .product-rating {
+      color: #f59e0b;
+      font-size: 13px;
+      margin: 5px 0;
+    }
+
+    .product-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .price {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .add-cart {
+      border: none;
+      background: #2563eb;
+      color: white;
+      border-radius: 9px;
+      width: 38px;
+      height: 38px;
+      font-size: 19px;
+    }
+
+    /* ===== Features ===== */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      display: flex;
+      gap: 13px;
+      align-items: center;
+      border: 1px solid #e9ecf2;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .feature span {
+      font-size: 12px;
+      color: #7a8292;
+    }
+
+    /* ===== Footer ===== */
+
+    footer {
+      background: #111827;
+      color: #d1d5db;
+      margin-top: 60px;
+      padding: 45px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    .footer-brand h2 {
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: #9ca3af;
+      max-width: 400px;
+    }
+
+    footer h3 {
+      color: white;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin: 5px 0;
+      font-size: 13px;
+      color: #9ca3af;
+    }
+
+    .copyright {
+      border-top: 1px solid #293241;
+      margin-top: 35px;
+      padding-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: #8b93a1;
+    }
+
+    /* ===== Responsive ===== */
+
+    @media (max-width: 900px) {
+      .categories {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-header {
+        height: auto;
+        padding: 12px 0;
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .search {
+        order: 3;
+        flex-basis: 100%;
+      }
+
+      .nav-menu {
+        gap: 20px;
+      }
+
+      .hero {
+        min-height: 300px;
+      }
+
+      .hero-content {
+        padding: 35px 25px;
+      }
+
+      .hero h1 {
+        font-size: 27px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .products {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .product-image {
+        height: 145px;
+        font-size: 48px;
+      }
+
+      .product-info {
+        padding: 12px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+
+    <div class="container top-header">
+
+      <a href="#" class="logo">
+        <span class="logo-icon">💻</span>
+        مای کامپیوتر
+      </a>
+
+      <div class="search">
+        <span>🔍</span>
+        <input
+          type="text"
+          placeholder="جستجوی محصول، برند یا دسته‌بندی..."
+        >
+      </div>
+
+      <div class="header-actions">
+
+        <button class="header-btn" title="حساب کاربری">
+          👤
+        </button>
+
+        <button class="header-btn cart" title="سبد خرید">
+          🛒
+          <span class="cart-count">0</span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="navigation">
+      <div class="container nav-menu">
+
+        <a href="#">خانه</a>
+        <a href="#">فروشگاه</a>
+        <a href="#">کامپیوتر و قطعات</a>
+        <a href="#">کابل و تبدیل</a>
+        <a href="#">شبکه</a>
+        <a href="#">حافظه</a>
+        <a href="#">موبایل</a>
+        <a href="#">گیمینگ</a>
+        <a href="#">تخفیف‌ها</a>
+
+      </div>
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="hero">
+
+        <div class="hero-decoration"></div>
+
+        <div class="hero-content">
+
+          <small>فروشگاه تخصصی دیجیتال</small>
+
+          <h1>
+            هر چیزی که برای دنیای دیجیتال نیاز داری
+          </h1>
+
+          <p>
+            قطعات کامپیوتر، لوازم جانبی، کابل و تبدیل،
+            تجهیزات شبکه، گیمینگ و محصولات دیجیتال
+          </p>
+
+          <a href="#products" class="hero-btn">
+            مشاهده محصولات
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- Categories -->
+      <section class="section">
+
+        <div class="section-title">
+          <h2>دسته‌بندی‌های فروشگاه</h2>
+          <a href="#">مشاهده همه ←</a>
+        </div>
+
+        <div class="categories">
+
+          <a class="category" href="#">
+            <div class="category-icon">🖥️</div>
+            <h3>کامپیوتر و قطعات</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">🔌</div>
+            <h3>کابل و تبدیل</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">🌐</div>
+            <h3>شبکه</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">💾</div>
+            <h3>حافظه و ذخیره‌سازی</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">📱</div>
+            <h3>موبایل و شارژ</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">🎮</div>
+            <h3>گیمینگ و کنسول</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">🔊</div>
+            <h3>صوتی</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">💻</div>
+            <h3>کیف و کاور</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">⚡</div>
+            <h3>برق و باتری</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">🧼</div>
+            <h3>لوازم نگهداری</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">🖨️</div>
+            <h3>لوازم پرینتر</h3>
+          </a>
+
+          <a class="category" href="#">
+            <div class="category-icon">🎧</div>
+            <h3>لوازم جانبی</h3>
+          </a>
+
+        </div>
+
+      </section>
+
+
+      <!-- Products -->
+      <section class="section" id="products">
+
+        <div class="section-title">
+          <h2>محصولات پیشنهادی</h2>
+          <a href="#">مشاهده همه ←</a>
+        </div>
+
+        <div class="products">
+
+          <div class="product">
+
+            <div class="product-image">🖱️</div>
+
+            <div class="product-info">
+
+              <div class="product-title">
+                ماوس سیمی کامپیوتر مدل Professional
+              </div>
+
+              <div class="product-rating">
+                ★★★★★
+              </div>
+
+              <div class="product-price">
+                <span class="price">
+                  ۳۵۰,۰۰۰ تومان
+                </span>
+
+                <button class="add-cart">
+                  +
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="product">
+
+            <div class="product-image">⌨️</div>
+
+            <div class="product-info">
+
+              <div class="product-title">
+                کیبورد USB با طراحی استاندارد
+              </div>
+
+              <div class="product-rating">
+                ★★★★☆
+              </div>
+
+              <div class="product-price">
+                <span class="price">
+                  ۵۲۰,۰۰۰ تومان
+                </span>
+
+                <button class="add-cart">
+                  +
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="product">
+
+            <div class="product-image">💾</div>
+
+            <div class="product-info">
+
+              <div class="product-title">
+                فلش مموری USB 3.0 ظرفیت ۱۲۸ گیگ
+              </div>
+
+              <div class="product-rating">
+                ★★★★★
+              </div>
+
+              <div class="product-price">
+                <span class="price">
+                  ۷۹۰,۰۰۰ تومان
+                </span>
+
+                <button class="add-cart">
+                  +
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="product">
+
+            <div class="product-image">🎧</div>
+
+            <div class="product-info">
+
+              <div class="product-title">
+                هندزفری سیمی با میکروفون
+              </div>
+
+              <div class="product-rating">
+                ★★★★☆
+              </div>
+
+              <div class="product-price">
+                <span class="price">
+                  ۴۲۰,۰۰۰ تومان
+                </span>
+
+                <button class="add-cart">
+                  +
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- Features -->
+      <section class="section">
+
+        <div class="features">
+
+          <div class="feature">
+            <div class="feature-icon">🚚</div>
+            <div>
+              <strong>ارسال سریع</strong>
+              <span>ارسال سفارش در سریع‌ترین زمان</span>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">🛡️</div>
+            <div>
+              <strong>تضمین اصالت</strong>
+              <span>محصولات با ضمانت اصالت</span>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">💳</div>
+            <div>
+              <strong>پرداخت امن</strong>
+              <span>پرداخت آنلاین و مطمئن</span>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">📞</div>
+            <div>
+              <strong>پشتیبانی</strong>
+              <span>پاسخگویی و پشتیبانی مشتریان</span>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- Footer -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <h2>مای کامپیوتر</h2>
+
+          <p>
+            فروشگاه آنلاین قطعات کامپیوتر، لوازم جانبی،
+            محصولات دیجیتال، شبکه، گیمینگ و تجهیزات جانبی.
+          </p>
+
+        </div>
+
+        <div>
+
+          <h3>دسترسی سریع</h3>
+
+          <ul>
+            <li>فروشگاه</li>
+            <li>محصولات جدید</li>
+            <li>تخفیف‌ها</li>
+            <li>پرفروش‌ترین‌ها</li>
+          </ul>
+
+        </div>
+
+        <div>
+
+          <h3>راهنما</h3>
+
+          <ul>
+            <li>نحوه خرید</li>
+            <li>روش‌های ارسال</li>
+            <li>قوانین و شرایط</li>
+            <li>سؤالات متداول</li>
+          </ul>
+
+        </div>
+
+        <div>
+
+          <h3>ارتباط با ما</h3>
+
+          <ul>
+            <li>تماس با ما</li>
+            <li>درباره ما</li>
+            <li>آدرس فروشگاه</li>
+            <li>شبکه‌های اجتماعی</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © ۱۴۰۵ مای کامپیوتر - تمامی حقوق محفوظ است.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    // شمارنده سبد خرید نمایشی
+
+    let cartCount = 0;
+
+    const cartNumber = document.querySelector(".cart-count");
+
+    const buttons = document.querySelectorAll(".add-cart");
+
+    buttons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        cartCount++;
+
+        cartNumber.textContent = cartCount;
+
+        button.textContent = "✓";
+
+        setTimeout(() => {
+          button.textContent = "+";
+        }, 800);
+
+      });
+
+    });
+
+
+    // جستجوی نمایشی
+
+    const searchInput = document.querySelector(".search input");
+
+    searchInput.addEventListener("keyup", function () {
+
+      if (this.value.length > 0) {
+        console.log("جستجو برای:", this.value);
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>

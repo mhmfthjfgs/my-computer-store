@@ -1,1 +1,906 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>محصول | مای کامپیوتر</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f5f7fb;
+      color: #222;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* Header */
+
+    header {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2563eb;
+      white-space: nowrap;
+    }
+
+    .search-box {
+      flex: 1;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 13px 18px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      outline: none;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .header-btn {
+      background: #f1f5f9;
+      padding: 10px 14px;
+      border-radius: 10px;
+      white-space: nowrap;
+      font-size: 14px;
+    }
+
+    .cart-count {
+      background: #2563eb;
+      color: white;
+      padding: 2px 7px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    /* Navigation */
+
+    nav {
+      background: white;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 10px 20px;
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+    }
+
+    .nav-container a {
+      white-space: nowrap;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .nav-container a:hover {
+      color: #2563eb;
+    }
+
+    /* Main */
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 25px;
+      color: #777;
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: #2563eb;
+    }
+
+    /* Product */
+
+    .product-page {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    }
+
+    .product-image {
+      min-height: 420px;
+      background: #f1f5f9;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 150px;
+    }
+
+    .product-info {
+      padding: 10px 0;
+    }
+
+    .category {
+      color: #2563eb;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .product-title {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .product-description {
+      color: #666;
+      line-height: 2;
+      margin-bottom: 25px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .price span {
+      font-size: 14px;
+      color: #777;
+      font-weight: normal;
+    }
+
+    .stock {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .purchase-box {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .quantity button {
+      border: none;
+      background: #f8fafc;
+      width: 42px;
+      height: 48px;
+      font-size: 20px;
+    }
+
+    .quantity input {
+      width: 50px;
+      height: 48px;
+      border: none;
+      text-align: center;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .add-cart {
+      flex: 1;
+      height: 48px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    .add-cart:hover {
+      background: #1d4ed8;
+    }
+
+    .back-shop {
+      display: inline-block;
+      margin-top: 10px;
+      color: #2563eb;
+      font-size: 14px;
+    }
+
+    /* Details */
+
+    .details {
+      margin-top: 30px;
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.04);
+    }
+
+    .details h2 {
+      margin-bottom: 20px;
+    }
+
+    .details p {
+      line-height: 2;
+      color: #666;
+    }
+
+    /* Footer */
+
+    footer {
+      margin-top: 50px;
+      background: #111827;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    footer h3 {
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      color: #cbd5e1;
+      line-height: 2;
+      font-size: 14px;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 800px) {
+
+      .header-container {
+        flex-wrap: wrap;
+      }
+
+      .search-box {
+        order: 3;
+        flex-basis: 100%;
+      }
+
+      .product-page {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        min-height: 300px;
+        font-size: 110px;
+      }
+
+      .product-title {
+        font-size: 26px;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Header -->
+
+<header>
+
+  <div class="header-container">
+
+    <a href="../index.html" class="logo">
+      💻 مای کامپیوتر
+    </a>
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        placeholder="جستجوی محصول..."
+        id="searchInput"
+      >
+
+    </div>
+
+    <div class="header-buttons">
+
+      <a
+        href="account.html"
+        class="header-btn">
+        👤 حساب
+      </a>
+
+      <a
+        href="cart.html"
+        class="header-btn">
+        🛒 سبد
+        <span
+          id="cartCount"
+          class="cart-count">
+          0
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- Navigation -->
+
+<nav>
+
+  <div class="nav-container">
+
+    <a href="../index.html">
+      خانه
+    </a>
+
+    <a href="shop.html">
+      فروشگاه
+    </a>
+
+    <a href="cart.html">
+      سبد خرید
+    </a>
+
+    <a href="account.html">
+      حساب کاربری
+    </a>
+
+  </div>
+
+</nav>
+
+
+<!-- Main -->
+
+<main class="container">
+
+  <div class="breadcrumb">
+
+    <a href="../index.html">
+      خانه
+    </a>
+
+    ←
+
+    <a href="shop.html">
+      فروشگاه
+    </a>
+
+    ←
+
+    محصول
+
+  </div>
+
+
+  <div
+    class="product-page"
+    id="productPage">
+
+    <!-- Image -->
+
+    <div
+      class="product-image"
+      id="productImage">
+      🖱️
+    </div>
+
+
+    <!-- Info -->
+
+    <div class="product-info">
+
+      <div
+        class="category"
+        id="productCategory">
+        کامپیوتر و قطعات
+      </div>
+
+      <h1
+        class="product-title"
+        id="productTitle">
+        ماوس کامپیوتر
+      </h1>
+
+      <p
+        class="product-description"
+        id="productDescription">
+        یک ماوس مناسب برای استفاده روزمره،
+        کارهای اداری، وب‌گردی و استفاده عمومی
+        از کامپیوتر.
+      </p>
+
+      <div
+        class="price"
+        id="productPrice">
+        ۳۵۰,۰۰۰
+        <span>تومان</span>
+      </div>
+
+      <div class="stock">
+        ✓ موجود در فروشگاه
+      </div>
+
+
+      <!-- Purchase -->
+
+      <div class="purchase-box">
+
+        <div class="quantity">
+
+          <button
+            id="decrease">
+            −
+          </button>
+
+          <input
+            type="number"
+            id="quantity"
+            value="1"
+            min="1"
+            max="10"
+          >
+
+          <button
+            id="increase">
+            +
+          </button>
+
+        </div>
+
+
+        <button
+          class="add-cart"
+          id="addProduct">
+          🛒 افزودن به سبد خرید
+        </button>
+
+      </div>
+
+
+      <a
+        href="shop.html"
+        class="back-shop">
+        ← بازگشت به فروشگاه
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- Details -->
+
+  <div class="details">
+
+    <h2>
+      توضیحات محصول
+    </h2>
+
+    <p id="detailsText">
+
+      این محصول یکی از محصولات نمونه فروشگاه است.
+      در مرحله بعد اطلاعات کامل هر محصول شامل
+      مشخصات فنی، برند، مدل، گارانتی، موجودی،
+      تصاویر و سایر ویژگی‌ها را به این قسمت
+      اضافه خواهیم کرد.
+
+    </p>
+
+  </div>
+
+</main>
+
+
+<!-- Footer -->
+
+<footer>
+
+  <div class="footer-container">
+
+    <div>
+
+      <h3>
+        مای کامپیوتر
+      </h3>
+
+      <p>
+        فروشگاه تجهیزات کامپیوتری،
+        لوازم جانبی و محصولات دیجیتال
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>
+        دسترسی سریع
+      </h3>
+
+      <p>
+
+        <a href="../index.html">
+          خانه
+        </a>
+
+        <br>
+
+        <a href="shop.html">
+          فروشگاه
+        </a>
+
+        <br>
+
+        <a href="cart.html">
+          سبد خرید
+        </a>
+
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>
+        تماس با ما
+      </h3>
+
+      <p>
+        اطلاعات تماس فروشگاه
+        در مرحله بعد اضافه خواهد شد.
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- Cart -->
+
+<script src="../js/cart.js"></script>
+
+
+<!-- Product -->
+
+<script>
+
+  const products = {
+
+    "mouse-001": {
+      name: "ماوس کامپیوتر",
+      price: 350000,
+      image: "🖱️",
+      category: "کامپیوتر و قطعات",
+      description:
+        "یک ماوس مناسب برای استفاده روزمره، کارهای اداری، وب‌گردی و استفاده عمومی از کامپیوتر.",
+      details:
+        "ماوس کامپیوتر مناسب برای استفاده روزانه و اداری. مشخصات کامل محصول در نسخه نهایی از پنل مدیریت قابل ویرایش خواهد بود."
+    },
+
+    "keyboard-001": {
+      name: "کیبورد کامپیوتر",
+      price: 520000,
+      image: "⌨️",
+      category: "کامپیوتر و قطعات",
+      description:
+        "کیبورد مناسب برای استفاده روزمره، تایپ، کارهای اداری و استفاده عمومی.",
+      details:
+        "کیبورد کامپیوتر با طراحی مناسب برای استفاده روزانه. اطلاعات دقیق محصول بعداً از پنل مدیریت ثبت خواهد شد."
+    },
+
+    "flash-128-001": {
+      name: "فلش مموری 128GB",
+      price: 790000,
+      image: "💾",
+      category: "حافظه و ذخیره‌سازی",
+      description:
+        "فلش مموری با ظرفیت 128 گیگابایت برای ذخیره و انتقال اطلاعات.",
+      details:
+        "ظرفیت 128GB. مشخصات سرعت خواندن و نوشتن و برند محصول در مرحله ورود محصولات واقعی ثبت خواهد شد."
+    },
+
+    "handsfree-001": {
+      name: "هندزفری سیمی",
+      price: 420000,
+      image: "🎧",
+      category: "موبایل و شارژ",
+      description:
+        "هندزفری سیمی مناسب برای مکالمه، موسیقی و استفاده روزمره.",
+      details:
+        "هندزفری سیمی مناسب استفاده روزانه. مشخصات کامل محصول بعداً از پنل مدیریت قابل تنظیم خواهد بود."
+    },
+
+    "typec-001": {
+      name: "کابل شارژ Type-C",
+      price: 180000,
+      image: "🔌",
+      category: "کابل و تبدیل",
+      description:
+        "کابل Type-C مناسب برای شارژ و انتقال اطلاعات.",
+      details:
+        "کابل Type-C نمونه فروشگاه. در نسخه نهایی برند، طول کابل، توان انتقال و سایر مشخصات ثبت می‌شود."
+    },
+
+    "charger-001": {
+      name: "شارژر دیواری",
+      price: 390000,
+      image: "🔋",
+      category: "موبایل و شارژ",
+      description:
+        "شارژر دیواری مناسب برای شارژ انواع دستگاه‌های سازگار.",
+      details:
+        "شارژر دیواری نمونه. مشخصات توان خروجی، تعداد پورت و استانداردهای شارژ در نسخه نهایی اضافه خواهد شد."
+    },
+
+    "lan-001": {
+      name: "کابل شبکه",
+      price: 220000,
+      image: "🌐",
+      category: "شبکه",
+      description:
+        "کابل شبکه مناسب برای اتصال کامپیوتر، مودم، روتر و تجهیزات شبکه.",
+      details:
+        "کابل شبکه نمونه فروشگاه. نوع کابل، طول، دسته‌بندی و سایر مشخصات بعداً ثبت می‌شود."
+    },
+
+    "controller-001": {
+      name: "دسته بازی",
+      price: 1200000,
+      image: "🎮",
+      category: "گیمینگ و کنسول",
+      description:
+        "دسته بازی مناسب برای تجربه بهتر بازی‌های کامپیوتری و کنسول.",
+      details:
+        "دسته بازی نمونه فروشگاه. برند، مدل، نوع اتصال و سازگاری با دستگاه‌ها در نسخه نهایی ثبت خواهد شد."
+    }
+
+  };
+
+
+  /* Get product ID */
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const productId =
+    params.get("id");
+
+
+  /* Select product */
+
+  const product =
+    products[productId] ||
+    products["mouse-001"];
+
+
+  /* Format price */
+
+  function formatPrice(price) {
+
+    return new Intl.NumberFormat(
+      "fa-IR"
+    ).format(price);
+
+  }
+
+
+  /* Display */
+
+  document.getElementById(
+    "productTitle"
+  ).textContent =
+    product.name;
+
+
+  document.getElementById(
+    "productCategory"
+  ).textContent =
+    product.category;
+
+
+  document.getElementById(
+    "productDescription"
+  ).textContent =
+    product.description;
+
+
+  document.getElementById(
+    "detailsText"
+  ).textContent =
+    product.details;
+
+
+  document.getElementById(
+    "productImage"
+  ).textContent =
+    product.image;
+
+
+  document.getElementById(
+    "productPrice"
+  ).innerHTML =
+    formatPrice(product.price) +
+    " <span>تومان</span>";
+
+
+  document.title =
+    product.name +
+    " | مای کامپیوتر";
+
+
+  /* Quantity */
+
+  const quantityInput =
+    document.getElementById("quantity");
+
+
+  document.getElementById(
+    "increase"
+  ).addEventListener(
+    "click",
+    function () {
+
+      let value =
+        Number(quantityInput.value);
+
+      if (value < 10) {
+        quantityInput.value =
+          value + 1;
+      }
+
+    }
+  );
+
+
+  document.getElementById(
+    "decrease"
+  ).addEventListener(
+    "click",
+    function () {
+
+      let value =
+        Number(quantityInput.value);
+
+      if (value > 1) {
+        quantityInput.value =
+          value - 1;
+      }
+
+    }
+  );
+
+
+  /* Add to cart */
+
+  document.getElementById(
+    "addProduct"
+  ).addEventListener(
+    "click",
+    function () {
+
+      const quantity =
+        Number(quantityInput.value);
+
+      for (
+        let i = 0;
+        i < quantity;
+        i++
+      ) {
+
+        if (
+          typeof addToCart ===
+          "function"
+        ) {
+
+          addToCart({
+            id: productId || "mouse-001",
+            name: product.name,
+            price: product.price,
+            image: product.image
+          });
+
+        }
+
+      }
+
+      this.textContent =
+        "✓ به سبد خرید اضافه شد";
+
+      setTimeout(() => {
+
+        this.textContent =
+          "🛒 افزودن به سبد خرید";
+
+      }, 1800);
+
+    }
+  );
+
+
+  /* Search */
+
+  document.getElementById(
+    "searchInput"
+  ).addEventListener(
+    "keydown",
+    function(event) {
+
+      if (
+        event.key === "Enter"
+      ) {
+
+        const search =
+          this.value.trim();
+
+        if (search) {
+
+          window.location.href =
+            "shop.html?search=" +
+            encodeURIComponent(search);
+
+        }
+
+      }
+
+    }
+  );
+
+</script>
+
+</body>
+</html>
